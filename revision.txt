@@ -1,0 +1,11 @@
+GET = Server  se jab data fetch karana ho toh tab isko use krte hai 
+POST = SERVER PR DATA SEND KRNA HO 
+PATCH = Server pr data already hai aur us data ko update krna ho 
+DELETE = Server pr data hai aur us delete krna ho 
+
+
+database pass - gtDBipQfk5blU8re
+
+
+mongodb+srv://yt-databse:gtDBipQfk5blU8re@yt-node-clustar.1sgerxe.mongodb.net/
+mongodb+srv://yt-databse:gtDBipQfk5blU8re@yt-node-clustar.1sgerxe.mongodb.net/
