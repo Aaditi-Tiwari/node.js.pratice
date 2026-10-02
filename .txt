@@ -1,0 +1,1 @@
+mongodb+srv://yt-databse:gtDBipQfk5blU8re@yt-node-clustar.1sgerxe.mongodb.net/
