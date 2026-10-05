@@ -5,25 +5,46 @@ const app = express();
 app.use(express.json());
 
 app.post("/notes", async (req, res) => {
-  const data = req.body
+  const data = req.body;
   await noteModel.create({
     title: data.title,
     description: data.description,
   });
 
   res.status(201).json({
-    message: "note createdb"
-  })
+    message: "note createdb",
+  });
 });
 
-app.get("/notes" ,async(req , res)=> {
+app.get("/notes", async (req, res) => {
+  /**
+     find => [{} ,{}] or []
+     findone => {} or null 
+     */
+  const notes = await noteModel.find();
+  res.status(200).json({
+    message: "notes created get method wle ",
+    notes: notes,
+  });
+});
 
-    const notes = await noteModel.find();
-    res.status(200).json({
-        message: "notes created get method wle ",
-        notes: notes
-    })
+app.delete("/notes/:id", async (req, res) => {
+  const id = req.params.id;
+  await noteModel.findOneAndDelete({
+    _id: id,
+  });
+
+  res.status(200).json({
+    message: "note deleted sucesssfully ",
+  });
+});
+
+
+app.patch("/notes/:id" , async(req,res)=>{
+    const id = req.params.id
+    const description = req.body.description
+
+    await noteModel.findOneAndUpdate({_id:id} ,{description: description})
 })
-
 
 module.exports = app;
