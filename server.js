@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 const app = require("./src/app")
 const connectDB = require("./src/db/db")
 
