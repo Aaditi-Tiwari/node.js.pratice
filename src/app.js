@@ -23,7 +23,7 @@ app.get("/notes", async (req, res) => {
      */
   const notes = await noteModel.find();
   res.status(200).json({
-    message: "notes created get method wle ",
+    message: "notes createdddd get method wle ",
     notes: notes,
   });
 });

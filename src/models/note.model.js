@@ -7,6 +7,6 @@ description: String,
 })
 
 
-const noteModel = mongoose.model("note" , noteSchema);
+const noteModel = mongoose.model("nooooote" , noteSchema);
 
 module.exports = noteModel
