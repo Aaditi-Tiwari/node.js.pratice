@@ -35,16 +35,20 @@ app.delete("/notes/:id", async (req, res) => {
   });
 
   res.status(200).json({
-    message: "note deleted sucesssfully ",
+    message: "note deleted sucesssfully",
   });
 });
 
+app.patch("/notes/:id", async (req, res) => {
+  const id = req.params.id;
+  const description = req.body.description;
 
-app.patch("/notes/:id" , async(req,res)=>{
-    const id = req.params.id
-    const description = req.body.description
+  await noteModel.findOneAndUpdate({ _id: id }, { description: description });
 
-    await noteModel.findOneAndUpdate({_id:id} ,{description: description})
-})
+  res.status(200).json({
+    message: "updated sucessfully",
+  });
+
+});
 
 module.exports = app;
