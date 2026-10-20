@@ -1,54 +1,20 @@
 const express = require("express");
 
-const noteModel = require("./models/note.model");
+const multer = require("multer")
+const uploadFile = require("../services/storage.service")
+
 const app = express();
 app.use(express.json());
 
-app.post("/notes", async (req, res) => {
-  const data = req.body;
-  await noteModel.create({
-    title: data.title,
-    description: data.description,
-  });
 
-  res.status(201).json({
-    message: "note createdb",
-  });
-});
+const upload = multer({storage: multer.memoryStorage()})
+app.post("/create-post", upload.single("image") , async (req, res) => {
+  console.log(req.body);
+ console.log(req.file)
 
-app.get("/notes", async (req, res) => {
-  /**
-     find => [{} ,{}] or []
-     findone => {} or null 
-     */
-  const notes = await noteModel.find();
-  res.status(200).json({
-    message: "notes createdddd get method ",
-    notes: notes,
-  });
-});
+ const result = await uploadFile(req.file.buffer)
 
-app.delete("/notes/:id", async (req, res) => {
-  const id = req.params.id;
-  await noteModel.findOneAndDelete({
-    _id: id,
-  });
-
-  res.status(200).json({
-    message: "note deleted sucesssfully",
-  });
-});
-
-app.patch("/notes/:id", async (req, res) => {
-  const id = req.params.id;
-  const description = req.body.description;
-
-  await noteModel.findOneAndUpdate({ _id: id }, { description: description });
-
-  res.status(200).json({
-    message: "updated sucessfully",
-  });
-
+ console.log(result)
 });
 
 module.exports = app;

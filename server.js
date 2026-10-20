@@ -1,20 +1,10 @@
-
 const app = require("./src/app")
-const connectDB = require("./src/db/db")
-
-connectDB()
+const connectedDB = require("./src/db/db")
 
 
-app.listen(3000, () => {
-    console.log("server is runn9ing on port 3000")
+connectedDB()
 
-const app = require("./src/app")
-const connectDB = require("./src/db/db")
 
-connectDB()
-})
-
-app.listen(3000, () => {
-    console.log("server is running on port 3000")
- 
+app.listen(3000 , () =>{
+    console.log("server is running port num 3000")
 })
